@@ -5,8 +5,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  *
  * @package Statistics
  * @author Liudon
+ * @author modified by ncnynl 2016-04-27
  * @version 1.0.0
- * @link http://www.liudon.org
+ * @link http://www.liudon.org http://www.ncnynl.com
  */
 class Statistics_Plugin implements Typecho_Plugin_Interface
 {
@@ -37,12 +38,13 @@ class Statistics_Plugin implements Typecho_Plugin_Interface
      *
      * @access public
      * @param Typecho_Widget_Helper_Form $form 配置面板
+     * @author modified by ncnynl 2016-04-27
      * @return void
      */
     public static function config(Typecho_Widget_Helper_Form $form)
     {
         /** 统计代码 */
-        $name = new Typecho_Widget_Helper_Form_Element_Text('code', NULL, '', _t('统计代码'));
+        $name = new Typecho_Widget_Helper_Form_Element_Textarea('code', NULL, '', _t('统计代码'));
         $form->addInput($name);
     }
 
@@ -60,9 +62,10 @@ class Statistics_Plugin implements Typecho_Plugin_Interface
      *
      * @access public
      * @return void
+     * @author modified by ncnynl 2016-04-27
      */
     public static function header($header)
     {
-        $header .= Helper::options()->plugin('Statistics')->code;
+        echo Helper::options()->plugin('Statistics')->code;
     }
 }
